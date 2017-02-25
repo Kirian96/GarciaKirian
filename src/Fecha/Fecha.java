@@ -1,8 +1,6 @@
 package Fecha;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Fecha {
 	private int dia;
@@ -15,6 +13,9 @@ public class Fecha {
 		this.anio = anio;
 	}
 	
+	private boolean bisiesto() {
+		return true;
+	}
 
 	private int diasMes() {
 		int diasMes = 0;
@@ -36,11 +37,12 @@ public class Fecha {
 			diasMes = 30;
 			break;
 		case 2:
-			if ( (anio % 400 == 0) || ( (anio % 4 == 0) && (anio % 100
-					!= 0) ) )
-					diasMes = 29;
-					else diasMes = 28;
-					break;
+			if ( bisiesto() )
+				diasMes = 29;
+				else
+				diasMes = 28;
+				break;
+
 		}
 		return diasMes;
 	}
